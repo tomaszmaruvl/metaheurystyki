@@ -49,5 +49,9 @@ public class City {
             int y_diff = this.y - otherCity.y;
             return Math.sqrt(x_diff * x_diff + y_diff * y_diff);
         }
+
+        public String toString(){
+            return Integer.toString(index);
+        }
     
 }

@@ -35,8 +35,8 @@ public class Loader {
         capacity = Integer.parseInt((((list.get(5)).split(":"))[1]).trim());
 
         for (int i = 7 ; i < 7 + dimension ; i++){
-            String[] coord_row = (list.get(i)).split(" ");
-            String[] demand_row = (list.get(i+dimension+1)).split(" ");
+            String[] coord_row = ((list.get(i)).trim()).split(" ");
+            String[] demand_row = ((list.get(i+dimension+1)).trim()).split(" ");
 
             citiesList.add(new City((toInt(coord_row[0])-1), toInt(coord_row[1]), toInt(coord_row[2]), toInt(demand_row[1])));
         }
