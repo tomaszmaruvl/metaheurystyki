@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Population {
     
-    List<Solution> population;
+    ArrayList<Solution> population;
     int populationQuantity;
     Solution bestSolution;
     Solution worstSolution;
@@ -36,9 +36,7 @@ public class Population {
         }
     }
 
-    public void checkPopulation(int capacity){
 
-    }
 
     public void printPopulation(){
         for(int i = 0 ; i < populationQuantity ; i++){
@@ -72,7 +70,7 @@ public class Population {
             for(Solution tourParticipant : tournamentParticipants)
                 if (tourParticipant.fitness < best.fitness)
                     best = tourParticipant;
-            return best;
+            return new Solution ((ArrayList<City>)best.solution.clone());
     }
 
     public Solution RunRoulette(int tournamentSize){

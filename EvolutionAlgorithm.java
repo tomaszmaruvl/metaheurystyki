@@ -14,13 +14,11 @@ public class EvolutionAlgorithm {
     Problem problem;
     Population population;
 
-    public EvolutionAlgorithm(int popQuant, int genQuant, double mutProp, double crossProp, double selProp, boolean rou,
-            Problem pb, int tsize) {
+    public EvolutionAlgorithm(int popQuant, int genQuant, double mutProp, double crossProp, boolean rou, Problem pb, int tsize) {
         this.populationQuantity = popQuant;
         this.generationQuantity = genQuant;
         this.mutationProp = mutProp;
         this.crossoverProp = crossProp;
-        this.selectionProp = selProp;
         this.problem = pb;
         this.roulette = rou;
         this.tournamentSize = tsize;
@@ -33,19 +31,19 @@ public class EvolutionAlgorithm {
         population.calculateStandardDeviation();
 
         Logger log_pop = new Logger("Populations" + attempt + ".txt");
-        Logger log_ind = new Logger("Individuals"+ attempt + ".txt");
+        // Logger log_ind = new Logger("Individuals"+ attempt + ".txt");
         log_pop.logPopulation(population, false);
-        log_ind.logIndividuals(population, false);
+        // log_ind.logIndividuals(population, false);
 
         for (int i = 0; i < generationQuantity; i++) {
             population = newGeneration();
-            mutatePopulationSwap();
+            mutatePopulationInverse();
             problem.calculateFitness(population);
             population.calculateStandardDeviation();
             log_pop.logPopulation(population, true);
-            log_ind.logIndividuals(population, true);
+            // log_ind.logIndividuals(population, true);
             if(i == (generationQuantity -1)){
-            System.out.println(i + " " + population.bestSolution.fitness);
+            System.out.println(population.bestSolution.fitness);
             }
             
         }

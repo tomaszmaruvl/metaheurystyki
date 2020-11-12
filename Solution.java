@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class Solution implements Comparable<Solution> {
 
-    List<City> solution;
+    ArrayList<City> solution;
     double fitness;
     int size;
     List<City> solutionWithReturns;
 
-    public Solution(List<City> solution) {
+    public Solution(ArrayList<City> solution) {
         this.solution = solution;
         this.size = solution.size();
     }
@@ -128,8 +128,8 @@ public class Solution implements Comparable<Solution> {
         }
     }
 
-    public void Repair(ArrayList<City>cities) {
-        ArrayList<City> listOfCities = (ArrayList<City>)cities.clone();
+    public void Repair(ArrayList<City> cities) {
+        ArrayList<City> listOfCities = (ArrayList<City>) cities.clone();
         listOfCities.remove(0);
         for (int i = 0; i < size; i++)
             for (int j = i + 1; j < size; j++) {
@@ -150,6 +150,60 @@ public class Solution implements Comparable<Solution> {
                 }
             }
     }
+
+    // public CrossedSolutions CrossOX(Solution secondSolution){
+    //     Random gen = new Random();
+    //         CrossedSolutions result = new CrossedSolutions();
+    //         int smallerCutIndex = gen.nextInt( size - 2);
+    //         int biggerCutIndex = gen.nextInt(size - smallerCutIndex) + smallerCutIndex;
+    //         int[] firstChildGenotype = new int[size];
+    //         int[] secondChildGenotype = new int[size];
+
+    //         for (int i = 0; i < size; i++)
+    //         {
+    //                 firstChildGenotype[i] = -1;
+    //                 secondChildGenotype[i] = -1;
+    //         }
+
+    //         for (int i = 0; i < size; i++)
+    //         {
+    //             if (! (i < smallerCutIndex || i > biggerCutIndex))
+    //             {
+    //                 firstChildGenotype[i] = secondSolution.solution.get(i).index;
+    //                 secondChildGenotype[i] = solution.get(i).index;
+    //             }
+    //         }
+    //         //tworzę listę z niepodmienionych fragmentów genotypu i dla każdego dziecka używam genów które nie występują w nim
+
+
+    //         ArrayList<Integer> usunedGens = new ArrayList<Integer>();
+    //         //copy usused gens from first indiv
+    //         for (int i = 0; i < size; i++)
+    //         {
+    //             if ((i < smallerCutIndex || i > biggerCutIndex))
+    //                 usunedGens.add(solution.get(i).index);
+    //         }
+    //         //copy usused gens from second indiv
+    //         for (int i = 0; i < size; i++)
+    //         {
+    //             if ((i < smallerCutIndex || i > biggerCutIndex))
+    //                 usunedGens.add(secondSolution.solution.get(i).index);
+    //         }
+    //         List<int> usunedGensInFirstChild = usunedGens.Where(x=> !firstChildGenotype.Contains(x)).GroupBy(y => y).Select(z => z.First()).ToList();
+    //         List<int> usunedGensInSecondChild = usunedGens.Where(x => !secondChildGenotype.Contains(x)).GroupBy(y => y).Select(z => z.First()).ToList();
+    //         int lastUsedFromFirstList = 0, lastUsedFromSecondList = 0;
+    //         for (int i = 0; i < this.Genotype.Length; i++)
+    //         {
+    //             if ((i < smallerCutIndex || i > biggerCutIndex))
+    //             {
+    //                         firstChildGenotype[i] = usunedGensInFirstChild[lastUsedFromFirstList++];
+    //                         secondChildGenotype[i] = usunedGensInSecondChild[lastUsedFromSecondList++];
+    //             }
+    //         }
+    //         children.First = new Individual(Algorythm, firstChildGenotype);
+    //         children.Second = new Individual(Algorythm, secondChildGenotype);
+    //         return children;
+    //     }
 
     class CrossedSolutions {
         Solution child1;
